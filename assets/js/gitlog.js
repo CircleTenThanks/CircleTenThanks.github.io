@@ -24,7 +24,7 @@ async function fetchLastCommitDate() {
     }
 
     // APIリクエストを送信
-    const response = await fetch('https://api.github.com/repos/CircleTenThanks/CircleTenThanks.github.io/commits?path=docs/_data/songs.csv');
+    const response = await fetch('https://api.github.com/repos/CircleTenThanks/CircleTenThanks.github.io/commits?path=_data/songs.csv');
     const commits = await response.json();
     if (commits.length > 0) {
         const lastCommitDate = new Date(commits[0].commit.committer.date);
