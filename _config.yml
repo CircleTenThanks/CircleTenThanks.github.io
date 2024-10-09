@@ -1,0 +1,36 @@
+title: CircleTenThanks
+description: 主に日向坂46の楽曲をピアノで奏でています。
+layout: default
+lang: ja
+url: "https://circletenthanks.github.io"
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-sass-converter
+twitter:
+  username: CircleTenThanks
+social:
+  name:  CircleTenThanks 
+  links:
+    - https://github.com/CircleTenThanks
+    - https://www.youtube.com/@CircleTenThanks
+    - https://x.com/CircleTenThanks
+defaults:
+  - scope:
+      path: "songs.md"
+    values:
+      layout: "songs"
+  - scope:
+      path: "thumbnail.md"
+    values:
+      layout: "thumbnail"
+
+
+  - scope:
+      path: "1804317729522155646.md"
+    values:
+      title: "1804317729522155646"
+      layout: "1804317729522155646"
+sass:
+  style: compressed
+  sass_dir: "materialize/sass"

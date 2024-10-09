@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "ja_JP" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- カスタムスタイルシート -->
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+
+    <!-- ナビゲーションバーの追加 -->
+    <ul id="calendar_dropdown" class="dropdown-content">
+      <li><a href="https://circletenthanks.github.io/Hinatazaka46Calendar/">日向坂46</a></li>
+      <li><a href="https://circletenthanks.github.io/MihoWatanabeCalendar/">渡邉美穂</a></li>
+    </ul>
+    <ul id="calendar_dropdown_side" class="dropdown-content">
+      <li><a href="https://circletenthanks.github.io/Hinatazaka46Calendar/">日向坂46</a></li>
+      <li><a href="https://circletenthanks.github.io/MihoWatanabeCalendar/">渡邉美穂</a></li>
+    </ul>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="home.html" class="brand-logo">
+          <img src="{{ "/assets/images/logo.svg" | relative_url }}" alt="ロゴ" class="logo-svg">CircleTenThanks
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="home.html"><i class="material-icons">home</i>Home</a></li>
+          <li><a href="songs.html"><i class="material-icons">library_music</i>Songs</a></li>
+          <li><a href="about.html"><i class="material-icons">info</i>About</a></li>
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-trigger" href="#!" data-target="calendar_dropdown"><i class="material-icons">calendar_month</i><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- モバイル用サイドナビ -->
+    <ul class="sidenav" id="mobile-demo">
+      <li><a href="home.html"><i class="material-icons">home</i>Home</a></li>
+      <li><a href="songs.html"><i class="material-icons">library_music</i>Songs</a></li>
+      <li><a href="about.html"><i class="material-icons">info</i>About</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="calendar_dropdown_side"><i class="material-icons">calendar_month</i>Google Calendar<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+
+    <!-- メインコンテンツ部分 -->
+    <div class="container-lg px-3 my-5 markdown-body">
+      {{ content }}
+
+      <!-- テーブル部分（横スクロール可能） -->
+      <div class="responsive-table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">曲名</th>
+              <th scope="col">採譜予定の順序</th>
+              <th scope="col">備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for song in site.data.songs %}
+              <tr>
+                {% if song.url != 'none' %}
+                <td class="wrap"><a href="{{ song.url }}">{{ song.name }}</a></td>
+                {% else %}
+                <td class="wrap">{{ song.name }}</td>
+                {% endif %}
+                <td>{{ song.lank }}</td>
+                <td>{{ song.note }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Materialize JS（モバイルメニュー用） -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $(".dropdown-trigger").dropdown();
+      });
+    </script>
+
+    <!-- Anchor.js（見出しにアンカーリンクを追加） -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

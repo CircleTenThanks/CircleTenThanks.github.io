@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "ja" }}">
+  {% include header.html %}
+  <body>
+    {% include nav.html %}
+    <!-- メインコンテンツ部分 -->
+    <div class="container-lg px-3 my-5 markdown-body">
+      {{ content }}
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">str</th>
+            <th scope="col">gen</th>
+            <th scope="col">member</th>
+            <th scope="col">description</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for row in site.data.1804317729522155646 %}
+          <tr>
+            <td><span style="background: linear-gradient(transparent 70%, {{ row.color }} 0%);">{{ row.str }}</span></td>
+            <td>{{ row.gen }}</td>
+            <td>{{ row.member }}</td>
+            <td class="wrap">{{ row.description }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% include footer.html %}
+  </body>
+</html>

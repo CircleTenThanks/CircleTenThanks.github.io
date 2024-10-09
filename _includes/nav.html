@@ -1,0 +1,33 @@
+<!-- ナビゲーションバー -->
+<ul id="calendar_dropdown" class="dropdown-content light-blue darken-1">
+    <li><a class="white-text" href="{{ '/Hinatazaka46Calendar/' | relative_url }}">日向坂46</a></li>
+    <li><a class="white-text" href="{{ '/MihoWatanabeCalendar/' | relative_url }}">渡邉美穂</a></li>
+</ul>
+<ul id="calendar_dropdown_side" class="dropdown-content">
+    <li><a href="{{ '/Hinatazaka46Calendar/' | relative_url }}">日向坂46</a></li>
+    <li><a href="{{ '/MihoWatanabeCalendar/' | relative_url }}">渡邉美穂</a></li>
+</ul>
+<nav>
+    <div class="nav-wrapper light-blue darken-1">
+        <a href="{{ '/' | relative_url }}" class="brand-logo">
+            <img src="{{ '/assets/images/logo.svg' | relative_url }}" width="64" height="64" alt="ロゴ" class="logo-svg">CircleTenThanks
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{{ '/' | relative_url }}"><i class="material-icons">home</i>Home</a></li>
+            <li><a href="{{ '/songs' | relative_url }}"><i class="material-icons">library_music</i>Songs</a></li>
+            <li><a href="{{ '/profile' | relative_url }}"><i class="material-icons">person</i>Profile</a></li>
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="calendar_dropdown"><i class="material-icons">calendar_month</i><i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- モバイル用サイドナビ -->
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{{ '/' | relative_url }}"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="{{ '/songs' | relative_url }}"><i class="material-icons">library_music</i>Songs</a></li>
+    <li><a href="{{ '/profile' | relative_url }}"><i class="material-icons">person</i>Profile</a></li>
+    <!-- Dropdown Trigger -->
+    <li><a class="dropdown-trigger" href="#!" data-target="calendar_dropdown_side"><i class="material-icons">calendar_month</i>Google Calendar<i class="material-icons right">arrow_drop_down</i></a></li>
+</ul>

@@ -1,0 +1,32 @@
+<p id="last-updated">最終更新日を取得中...</p>
+<script src="{{ '/assets/js/gitlog.min.js' | relative_url }}"></script>
+<!-- テーブル部分（横スクロール可能） -->
+<div class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a></th>
+                <th scope="col"><a href="{{ '/songs/採譜予定の順序' | relative_url }}">採譜予定の順序</a></th>
+                <th scope="col">備考</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for song in site.data.songs -%}
+            <tr>
+                {% if song.url != 'none' -%}
+                <td class="wrap"><a href="{{ song.url }}">{{ song.name }}</a></td>
+                {% else -%}
+                <td class="wrap">{{ song.name }}</td>
+                {% endif -%}
+                <td>{{ song.lank }}</td>
+                <td>
+                    {% assign notes = song.note | split: '、' -%}
+                    {% for note in notes -%}
+                    <a href="{{ '/songs/' | relative_url }}{{ note | strip }}">{{ note | strip }}</a>{% unless forloop.last %}、{% endunless -%}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
