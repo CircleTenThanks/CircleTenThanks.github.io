@@ -21,7 +21,7 @@ $primary-color-dark: darken($primary-color, 15%);
 //@import "components/normalize";
 
 // components
-//@import "components/global";
+@import "components/global";
 //@import "components/badges";
 @import "components/icons-material-design";
 //@import "components/grid";
