@@ -48,7 +48,7 @@ jobs:
           node-version: '20'
 
       - name: Install csso
-        run: npm install -g csso
+        run: npm install -g csso-cli
 
       - name: Minify CSS
         run: csso assets/css/style.css -o assets/css/style.min.css
