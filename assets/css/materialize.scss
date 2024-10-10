@@ -13,7 +13,7 @@ $primary-color-light: lighten($primary-color, 15%);
 $primary-color-dark: darken($primary-color, 15%);
 
 // Variables;
-//@import "components/variables";
+@import "components/variables";
 
 // Reset
 //@import "components/normalize";
