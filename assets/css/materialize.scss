@@ -5,9 +5,9 @@
 
 // Color
 //@import "components/color-variables";
-@import "components/color-classes";
+//@import "components/color-classes";
 
-$primary-color: materialize-light-blue;
+$primary-color: color("light-blue", "darken-1");
 $primary-color-light: lighten($primary-color, 15%);
 $primary-color-dark: darken($primary-color, 15%);
 
