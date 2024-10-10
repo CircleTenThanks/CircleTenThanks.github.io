@@ -32,29 +32,6 @@ p {
     margin: 0.5em 1em 0 1em;
 }
 
-/* コードスタイル */
-pre {
-    background-color: #f0f0f0;
-    border: 1px solid #e1e4e8;
-    padding: 10px;
-    overflow: auto; /* オーバーフローを自動処理 */
-    border-radius: 3px;
-}
-
-code {
-    background-color: #f0f0f0;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-}
-
-/* 引用スタイル */
-blockquote {
-    border-left: 4px solid #dfe2e5;
-    padding: 0.5em 1em;
-    color: #6a737d;
-    background-color: #f6f8fa;
-}
-
 /* ナビゲーションメニューのスタイル */
 nav {
     position: fixed; /* 固定位置 */
@@ -132,26 +109,4 @@ td.wrap {
     white-space: normal; /* 通常の折り返しを許可 */
     word-wrap: break-word; /* 単語の折り返しを許可 */
     max-width: 50%; /* 最大幅を50%に設定 */
-}
-
-/* 横スクロールバーのスタイル */
-.responsive-table::-webkit-scrollbar {
-    height: 8px; /* スクロールバーの高さ */
-}
-
-.responsive-table::-webkit-scrollbar-thumb {
-    background-color: #888; /* スクロールバーのつまみ色 */
-    border-radius: 4px; /* スクロールバーのつまみの角を丸める */
-}
-
-/* スクロールのヒント */
-.scroll-hint:after {
-    content: '→'; /* 矢印の表示 */
-    position: absolute; /* 絶対位置 */
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%); /* 縦位置を中央に */
-    font-size: 24px;
-    color: #888; /* ヒントの色 */
-    opacity: 0.5; /* 半透明に設定 */
 }
