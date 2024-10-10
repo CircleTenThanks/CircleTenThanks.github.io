@@ -8,8 +8,8 @@
 //@import "components/color-classes";
 
 $primary-color: color("materialize-light-blue", "darken-1");
-$primary-color-light: false;
-$primary-color-dark: false;
+$primary-color-light: lighten($primary-color, 15%);
+$primary-color-dark: darken($primary-color, 15%);
 
 // Variables;
 @import "components/variables";
