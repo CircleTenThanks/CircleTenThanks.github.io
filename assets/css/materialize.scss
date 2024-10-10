@@ -7,14 +7,12 @@
 //@import "components/color-variables";
 //@import "components/color-classes";
 
-//$primary-color: color("light-blue", "darken-1");
-$primary-color: #039be5;
+$primary-color: color("light-blue", "darken-1");
 $primary-color-light: lighten($primary-color, 15%);
 $primary-color-dark: darken($primary-color, 15%);
 
 // Variables;
-//@import "components/variables";
-$link-color: $primary-color;
+@import "components/variables";
 
 // Reset
 //@import "components/normalize";
@@ -48,3 +46,25 @@ $link-color: $primary-color;
 //@import "components/pulse";
 //@import "components/datepicker";
 //@import "components/timepicker";
+
+// usage: color("name_of_color", "type_of_color")
+// to avoid to repeating map-get($colors, ...)
+
+$light-blue: (
+  "darken-1":   #039be5,
+);
+
+$colors: (
+  "light-blue": $light-blue,
+) !default;
+
+@function color($color, $type) {
+  @if map-has-key($colors, $color) {
+    $curr_color: map-get($colors, $color);
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  }
+  @warn "Unknown `#{$color}` - `#{$type}` in $colors.";
+  @return null;
+}
