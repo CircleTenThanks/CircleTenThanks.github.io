@@ -47,6 +47,12 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install csso
+        run: npm install -g csso
+
+      - name: Minify CSS
+        run: csso assets/css/style.css -o assets/css/style.min.css
+
       - name: Install UglifyJS
         run: npm install -g uglify-js
 
@@ -59,9 +65,11 @@ jobs:
           ruby-version: '3.1' # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
+          
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -71,6 +79,7 @@ jobs:
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
+
   # Deployment job
   deploy:
     environment:
