@@ -47,16 +47,29 @@ $primary-color-dark: darken($primary-color, 15%);
 //@import "components/datepicker";
 //@import "components/timepicker";
 
-// usage: color("name_of_color", "type_of_color")
-// to avoid to repeating map-get($colors, ...)
-
 $light-blue: (
+  "base":       #03a9f4,
+  "lighten-5":  #e1f5fe,
+  "lighten-4":  #b3e5fc,
+  "lighten-3":  #81d4fa,
+  "lighten-2":  #4fc3f7,
+  "lighten-1":  #29b6f6,
   "darken-1":   #039be5,
+  "darken-2":   #0288d1,
+  "darken-3":   #0277bd,
+  "darken-4":   #01579b,
+  "accent-1":    #80d8ff,
+  "accent-2":    #40c4ff,
+  "accent-3":    #00b0ff,
+  "accent-4":    #0091ea
 );
 
 $colors: (
   "light-blue": $light-blue,
 ) !default;
+
+// usage: color("name_of_color", "type_of_color")
+// to avoid to repeating map-get($colors, ...)
 
 @function color($color, $type) {
   @if map-has-key($colors, $color) {
