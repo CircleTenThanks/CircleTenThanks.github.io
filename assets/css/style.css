@@ -69,17 +69,9 @@ nav {
 
 /* テーブルスタイル */
 .responsive-table {
-    overflow-x: auto; /* 横スクロールを可能にする */
-    display: block;
     white-space: nowrap; /* テキストの折り返しを無効 */
     border: 1px solid #ddd; /* テーブル全体の境界線 */
     margin: 0 1em; /* 左右のマージン */
-}
-
-table {
-    border-collapse: collapse; /* 境界線を重ねる */
-    width: 100%; /* 幅を100%に設定 */
-    table-layout: auto;
 }
 
 table, th, td {
@@ -88,20 +80,14 @@ table, th, td {
 
 th, td {
     padding: 8px; /* パディングの設定 */
-    text-align: left; /* 左寄せ */
-    vertical-align: top; /* 上寄せ */
 }
 
 /* セルのテキストオーバーフロー処理 */
 td {
     white-space: nowrap; /* 折り返し無効 */
-    overflow: hidden; /* オーバーフローを隠す */
-    text-overflow: ellipsis; /* テキストが溢れた場合の省略記号 */
-    max-width: 50%; /* 最大幅を50%に設定 */
 }
 
 td.wrap {
     white-space: normal; /* 通常の折り返しを許可 */
     word-wrap: break-word; /* 単語の折り返しを許可 */
-    max-width: 50%; /* 最大幅を50%に設定 */
 }
