@@ -12,19 +12,15 @@ $primary-color: #039be5;
 $primary-color-light: lighten($primary-color, 15%);
 $primary-color-dark: darken($primary-color, 15%);
 
-$secondary-color: false;
-$success-color: false;
-$error-color: false;
-$link-color: $primary-color;
-
 // Variables;
-@import "components/variables";
+//@import "components/variables";
+$link-color: $primary-color;
 
 // Reset
 //@import "components/normalize";
 
 // components
-@import "components/global";
+//@import "components/global";
 //@import "components/badges";
 @import "components/icons-material-design";
 //@import "components/grid";
