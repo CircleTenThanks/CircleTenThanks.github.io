@@ -12,9 +12,6 @@
 }
 
 // Variables;
-$primary-color: color("light-blue", "darken-1");
-$primary-color-light: lighten($primary-color, 15%);
-$primary-color-dark: darken($primary-color, 15%);
 @import "components/variables";
 
 // Reset
