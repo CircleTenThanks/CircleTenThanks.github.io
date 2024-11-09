@@ -32,7 +32,7 @@ jobs:
           import pandas as pd
 
           # CSVファイルを読み込む
-          df = pd.read_csv('your_csv_file.csv')
+          df = pd.read_csv('_data/songs.csv')
 
           # 重複する'lank'の値を検出
           if df['lank'].duplicated().any():
@@ -41,7 +41,7 @@ jobs:
               df['lank'] = df.groupby('lank').cumcount().astype(str)  # 重複を避けるため番号付け
 
               # 修正後のデータをCSVとして保存
-              df.to_csv('your_csv_file.csv', index=False)
+              df.to_csv('_data/songs.csv', index=False)
 
               print("Duplicates found and resolved.")
           else:
@@ -52,7 +52,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add your_csv_file.csv
+          git add _data/songs.csv
           git commit -m "Fix: Resolve duplicate 'lank' values"
           git push
 
