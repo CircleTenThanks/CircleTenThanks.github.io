@@ -1,0 +1,58 @@
+name: Check Lank Duplicates and Commit
+
+on:
+  push:
+    paths:
+      - '_data/songs.csv'  # _data/songs.csvが変更された時にトリガーされる
+
+jobs:
+  check_and_commit:
+    runs-on: ubuntu-latest
+    steps:
+    
+      # 1. リポジトリのコードをチェックアウト
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Pythonをセットアップ
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      # 3. 必要なPythonパッケージをインストール
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas
+
+      # 4. CSVファイルの重複チェックと修正
+      - name: Check for duplicates in 'lank' column
+        run: |
+          import pandas as pd
+
+          # CSVファイルを読み込む
+          df = pd.read_csv('your_csv_file.csv')
+
+          # 重複する'lank'の値を検出
+          if df['lank'].duplicated().any():
+              # 重複を解決するために、重複を除去（適宜修正）
+              df['lank'] = df['lank'].fillna('')  # NaNを空文字に置き換え
+              df['lank'] = df.groupby('lank').cumcount().astype(str)  # 重複を避けるため番号付け
+
+              # 修正後のデータをCSVとして保存
+              df.to_csv('your_csv_file.csv', index=False)
+
+              print("Duplicates found and resolved.")
+          else:
+              print("No duplicates found in the 'lank' column.")
+
+      # 5. 修正されたCSVファイルをコミット
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add your_csv_file.csv
+          git commit -m "Fix: Resolve duplicate 'lank' values"
+          git push
+
