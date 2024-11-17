@@ -61,7 +61,7 @@ function sortTable(columnIndex, order) {
 
     for (i = 1; i < rows.length; i++) {
         if (rows[i].getElementsByTagName("TD")[columnIndex].innerHTML.trim() === "") {
-            table.appendChild(rows[i]); // 空文字の行をテーブルの最後に移動
+            table.insertBefore(rows[i], rows[rows.length - 1].nextSibling); // 空文字の行をテーブルの最後に移動
         }
     }
 }
