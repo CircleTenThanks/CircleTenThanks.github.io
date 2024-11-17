@@ -26,7 +26,7 @@
                 <td>
                     {% assign notes = song.note | split: '、' -%}
                     {% for note in notes -%}
-                    <a href="{{ '/songs/' | relative_url }}{{ note | strip }}">{{ note | strip }}</a>{% unless forloop.last %}、{% endunless -%}
+                    <a href="{{ '/songs/' | relative_url }}{{ note | strip }}">{{ note | strip }}</a>{% unless forloop.last %}<br>{% endunless -%}
                     {% endfor %}
                 </td>
             </tr>
