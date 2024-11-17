@@ -1,8 +1,13 @@
 <p id="last-updated">最終更新日を取得中...</p>
 <script src="{{ '/assets/js/gitlog.min.js' | relative_url }}"></script>
-<!-- テーブル部分（横スクロール可能） -->
+<div>
+    <input type="text" id="searchInput" placeholder="検索..." onkeyup="filterTable()">
+    <button onclick="sortTable(0)">曲名でソート</button>
+    <button onclick="sortTable(1)">採譜順序でソート</button>
+    <button onclick="sortTable(2)">備考でソート</button>
+</div>
 <div class="responsive-table">
-    <table>
+    <table id="songsTable">
         <thead>
             <tr>
                 <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a></th>
