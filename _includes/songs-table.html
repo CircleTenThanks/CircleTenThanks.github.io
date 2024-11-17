@@ -9,9 +9,9 @@
     <table id="songsTable">
         <thead>
             <tr>
-                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a> <a href="#" onclick="sortTable('0', 'asc')">↑</a> <a href="#" onclick="sortTable('0', 'desc')">↓</a></th>
-                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1', 'asc')">↑</a> <a href="#" onclick="sortTable('1', 'desc')">↓</a></th>
-                <th scope="col">備考 <a href="#" onclick="sortTable('2', 'asc')">↑</a> <a href="#" onclick="sortTable('2', 'desc')">↓</a></th>
+                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a></th>
+                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1')"><i class="material-icons">sort</i></a></th>
+                <th scope="col">備考</th>
             </tr>
         </thead>
         <tbody>

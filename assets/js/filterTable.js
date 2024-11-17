@@ -20,11 +20,19 @@ function filterTable() {
     }
 }
 
-function sortTable(columnIndex, order) {
+function sortTable(columnIndex) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("songsTable");
     switching = true;
-    dir = order;
+
+    // 初期値を設定
+    if (typeof window.sortOrder === 'undefined') {
+        window.sortOrder = "asc"; // 初期値は昇順
+    }
+
+    // 昇順と降順をトグル
+    dir = window.sortOrder;
+    window.sortOrder = (dir === "asc") ? "desc" : "asc"; // 次回のトグル
 
     while (switching) {
         switching = false;
@@ -46,22 +54,6 @@ function sortTable(columnIndex, order) {
                     break;
                 }
             }
-        }
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            switchcount++;
-        } else {
-            if (switchcount === 0 && dir === "asc") {
-                dir = "desc";
-                switching = true;
-            }
-        }
-    }
-
-    for (i = 1; i < rows.length; i++) {
-        if (rows[i].getElementsByTagName("TD")[columnIndex].innerHTML.trim() === "") {
-            table.insertBefore(rows[i], rows[rows.length - 1].nextSibling); // 空文字の行をテーブルの最後に移動
         }
     }
 }
