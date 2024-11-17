@@ -24,61 +24,37 @@ function filterTable() {
 }
 
 function sortTable(columnIndex) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("songsTable");
-    switching = true;
+    const table = document.getElementById("songsTable");
+    const rows = Array.from(table.rows).slice(1); // ヘッダーを除く全行を配列に変換
 
     // 列の状態を初期化（未設定の場合）
     if (!columnStates[columnIndex]) {
         columnStates[columnIndex] = "asc";
     }
-    dir = columnStates[columnIndex];
+    let dir = columnStates[columnIndex];
 
-    while (switching) {
-        switching = false;
-        rows = table.rows;
+    // 空の行の表示/非表示を設定
+    rows.forEach(row => {
+        const cell = row.getElementsByTagName("TD")[columnIndex];
+        row.style.display = cell.innerHTML.trim() === "" && dir !== "original" ? "none" : "";
+    });
 
-        for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[columnIndex];
-            y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+    // ソート処理
+    if (dir !== "original") {
+        rows.sort((rowA, rowB) => {
+            const cellA = rowA.getElementsByTagName("TD")[columnIndex].innerHTML.toLowerCase();
+            const cellB = rowB.getElementsByTagName("TD")[columnIndex].innerHTML.toLowerCase();
+            return dir === "asc" 
+                ? cellA.localeCompare(cellB)
+                : cellB.localeCompare(cellA);
+        });
 
-            // 空文字の行を非表示にする
-            if (x.innerHTML.trim() === "") {
-                rows[i].style.display = dir === "original" ? "" : "none";
-                continue; // 次の行へ
-            } else {
-                rows[i].style.display = ""; // 空文字でない行は表示
-            }
-
-            if (dir === "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    shouldSwitch = true;
-                    break;
-                }
-            } else if (dir === "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-        }
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            switchcount++;
-        } else {
-            if (switchcount === 0) {
-                if (dir === "asc") {
-                    dir = "desc"; // 降順に切り替え
-                } else if (dir === "desc") {
-                    dir = "original"; // 元の状態に切り替え
-                } else if (dir === "original") {
-                    dir = "asc"; // 昇順に戻す
-                }
-                columnStates[columnIndex] = dir; // 状態を保存
-                switching = true;
-            }
-        }
+        // ソートされた行を再配置
+        rows.forEach(row => table.tBodies[0].appendChild(row));
     }
+
+    // 次の状態を設定
+    columnStates[columnIndex] = dir === "asc" ? "desc" 
+        : dir === "desc" ? "original"
+        : "asc";
 }
