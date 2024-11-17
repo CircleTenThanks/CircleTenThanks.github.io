@@ -35,15 +35,21 @@ function sortTable(columnIndex, order) {
             x = rows[i].getElementsByTagName("TD")[columnIndex];
             y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
 
-            if (dir === "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    shouldSwitch = true;
-                    break;
-                }
-            } else if (dir === "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    shouldSwitch = true;
-                    break;
+            if (x.innerHTML.trim() === "" && y.innerHTML.trim() !== "") {
+                shouldSwitch = false; // xが空の場合はスイッチしない
+            } else if (y.innerHTML.trim() === "" && x.innerHTML.trim() !== "") {
+                shouldSwitch = true; // yが空の場合はスイッチする
+            } else {
+                if (dir === "asc") {
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                } else if (dir === "desc") {
+                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
                 }
             }
         }
