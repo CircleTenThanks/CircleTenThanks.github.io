@@ -92,7 +92,7 @@ td.wrap {
 }
 
 .input-field {
-    margin: 0 1em; /* 左右のマージンを1emに設定 */
+    margin: 1rem 1em;
 }
 
 .responsive-table .material-icons {
