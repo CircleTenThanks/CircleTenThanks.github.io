@@ -51,14 +51,19 @@ jobs:
         run: npm install -g csso-cli
 
       - name: Minify CSS
-        run: csso assets/css/style.css -o assets/css/style.min.css
+        run: |
+          for file in assets/css/*.css; do
+            csso "$file" -o "${file%.css}.min.css"
+          done
 
       - name: Install UglifyJS
         run: npm install -g uglify-js
 
       - name: Run UglifyJS
-        run: uglifyjs assets/js/gitlog.js -o assets/js/gitlog.min.js
-        run: uglifyjs assets/js/filterTable.js -o assets/js/filterTable.min.js
+        run: |
+          for file in assets/js/*.js; do
+            uglifyjs "$file" -o "${file%.js}.min.js"
+          done
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
