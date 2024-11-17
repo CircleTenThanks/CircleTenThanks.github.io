@@ -20,11 +20,11 @@ function filterTable() {
     }
 }
 
-function sortTable(columnIndex) {
+function sortTable(columnIndex, order) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("songsTable");
     switching = true;
-    dir = "asc"; // 初期は昇順
+    dir = order;
 
     while (switching) {
         switching = false;
@@ -53,7 +53,7 @@ function sortTable(columnIndex) {
             switchcount++;
         } else {
             if (switchcount === 0 && dir === "asc") {
-                dir = "desc"; // 降順に切り替え
+                dir = "desc";
                 switching = true;
             }
         }
