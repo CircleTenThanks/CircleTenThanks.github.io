@@ -71,6 +71,7 @@ nav {
     white-space: nowrap; /* テキストの折り返しを無効 */
     border: 1px solid #ddd; /* テーブル全体の境界線 */
     margin: 0 1em; /* 左右のマージンを1emに設定 */
+    border-collapse: collapse; /* 罫線の重複を防ぐ */
 }
 
 table, th, td {
