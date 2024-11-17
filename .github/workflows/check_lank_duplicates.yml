@@ -68,6 +68,7 @@ jobs:
           git commit -m "Fix: Resolve duplicate 'lank' values"
           git remote set-url origin https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           git push origin $branch_name
+          rm check_duplicates.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
