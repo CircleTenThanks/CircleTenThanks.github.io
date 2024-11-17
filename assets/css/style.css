@@ -70,7 +70,7 @@ nav {
 .responsive-table {
     white-space: nowrap; /* テキストの折り返しを無効 */
     border: 1px solid #ddd; /* テーブル全体の境界線 */
-    margin: 0 1em; /* 左右のマージン */
+    margin: 0 1em; /* 左右のマージンを1emに設定 */
 }
 
 table, th, td {
@@ -89,4 +89,8 @@ td {
 td.wrap {
     white-space: normal; /* 通常の折り返しを許可 */
     word-wrap: break-word; /* 単語の折り返しを許可 */
+}
+
+.input-field {
+    margin: 0 1em; /* 左右のマージンを1emに設定 */
 }
