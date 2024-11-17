@@ -10,6 +10,7 @@
   * 大本彩乃(Perfume)
 * [YouTube](https://www.youtube.com/@CircleTenThanks)
   * 推しの楽曲をピアノで奏でています。
+  * チャンネル登録してくれたら喜びます。
 * [X](https://x.com/CircleTenThanks)
   * ほぼROM専。
   * DMを開放しているので、問い合わせがあればどうぞ。

@@ -1,6 +1,7 @@
 # Home
 
-[YouTube](https://www.youtube.com/@CircleTenThanks)で主に日向坂46の楽曲をピアノで奏でています。
+[YouTube](https://www.youtube.com/@CircleTenThanks)で主に日向坂46の楽曲をピアノで奏でています。  
+チャンネル登録してくれたら喜びます。
 
 ## [Songs](songs)
 * 日向坂46楽曲一覧
