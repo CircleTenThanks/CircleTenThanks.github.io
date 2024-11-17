@@ -54,11 +54,22 @@ function sortTable(columnIndex) {
         });
     } else {
         rows.sort((rowA, rowB) => {
-            const cellA = rowA.getElementsByTagName("TD")[columnIndex].innerHTML.toLowerCase();
-            const cellB = rowB.getElementsByTagName("TD")[columnIndex].innerHTML.toLowerCase();
-            return dir === "asc" 
-                ? cellA.localeCompare(cellB)
-                : cellB.localeCompare(cellA);
+            const cellA = rowA.getElementsByTagName("TD")[columnIndex].innerHTML.trim();
+            const cellB = rowB.getElementsByTagName("TD")[columnIndex].innerHTML.trim();
+
+            // 整数値に変換できる場合は整数として比較
+            const numA = parseFloat(cellA);
+            const numB = parseFloat(cellB);
+            const isNumA = !isNaN(numA);
+            const isNumB = !isNaN(numB);
+
+            if (isNumA && isNumB) {
+                return dir === "asc" ? numA - numB : numB - numA;
+            } else {
+                return dir === "asc" 
+                    ? cellA.localeCompare(cellB)
+                    : cellB.localeCompare(cellA);
+            }
         });
 
         // ソートされた行を再配置
