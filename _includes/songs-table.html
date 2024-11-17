@@ -9,8 +9,8 @@
     <table id="songsTable">
         <thead>
             <tr>
-                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a></th>
-                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1')"><i class="material-icons">sort</i></a></th>
+                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}" target="_blank">曲名</a></th>
+                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}" target="_blank">採譜順序</a> <a href="#" onclick="sortTable('1')"><i class="material-icons">sort</i></a></th>
                 <th scope="col">備考</th>
             </tr>
         </thead>
@@ -18,7 +18,7 @@
             {% for song in site.data.songs -%}
             <tr>
                 {% if song.url != 'none' -%}
-                <td class="wrap"><a href="{{ song.url }}">{{ song.name }}</a></td>
+                <td class="wrap"><a href="{{ song.url }}" target="_blank">{{ song.name }}</a></td>
                 {% else -%}
                 <td class="wrap">{{ song.name }}</td>
                 {% endif -%}
@@ -26,7 +26,7 @@
                 <td>
                     {% assign notes = song.note | split: '、' -%}
                     {% for note in notes -%}
-                    <a href="{{ '/songs/' | relative_url }}{{ note | strip }}">{{ note | strip }}</a>{% unless forloop.last %}、{% endunless -%}
+                    <a href="{{ '/songs/' | relative_url }}{{ note | strip }}" target="_blank">{{ note | strip }}</a>{% unless forloop.last %}、{% endunless -%}
                     {% endfor %}
                 </td>
             </tr>
