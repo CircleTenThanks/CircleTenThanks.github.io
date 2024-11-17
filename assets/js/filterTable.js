@@ -60,14 +60,14 @@ function sortTable(columnIndex) {
             switching = true;
             switchcount++;
         } else {
-            if (switchcount === 0 && dir === "asc") {
-                dir = "desc"; // 降順に切り替え
-                switching = true;
-            } else if (switchcount === 0 && dir === "desc") {
-                dir = "original"; // 元の状態に切り替え
-                switching = true;
-            } else if (switchcount === 0 && dir === "original") {
-                dir = "asc"; // 昇順に戻す
+            if (switchcount === 0) {
+                if (dir === "asc") {
+                    dir = "desc"; // 降順に切り替え
+                } else if (dir === "desc") {
+                    dir = "original"; // 元の状態に切り替え
+                } else if (dir === "original") {
+                    dir = "asc"; // 昇順に戻す
+                }
                 switching = true;
             }
         }
