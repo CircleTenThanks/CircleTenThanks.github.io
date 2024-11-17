@@ -1,5 +1,6 @@
 // グローバル変数として列ごとの状態を保持
 const columnStates = {};
+const originalOrder = [];
 
 function filterTable() {
     var input, filter, table, tr, td, i, j, txtValue;
@@ -25,7 +26,12 @@ function filterTable() {
 
 function sortTable(columnIndex) {
     const table = document.getElementById("songsTable");
-    const rows = Array.from(table.rows).slice(1); // ヘッダーを除く全行を配列に変換
+    const rows = Array.from(table.rows).slice(1);
+
+    // 初回実行時に元の順序を保存
+    if (originalOrder.length === 0) {
+        rows.forEach(row => originalOrder.push(row.cloneNode(true)));
+    }
 
     // 列の状態を初期化（未設定の場合）
     if (!columnStates[columnIndex]) {
@@ -40,7 +46,13 @@ function sortTable(columnIndex) {
     });
 
     // ソート処理
-    if (dir !== "original") {
+    if (dir === "original") {
+        // 元の順序に戻す
+        table.tBodies[0].innerHTML = '';
+        originalOrder.forEach(row => {
+            table.tBodies[0].appendChild(row.cloneNode(true));
+        });
+    } else {
         rows.sort((rowA, rowB) => {
             const cellA = rowA.getElementsByTagName("TD")[columnIndex].innerHTML.toLowerCase();
             const cellB = rowB.getElementsByTagName("TD")[columnIndex].innerHTML.toLowerCase();
