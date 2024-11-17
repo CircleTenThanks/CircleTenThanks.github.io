@@ -3,17 +3,14 @@
 <script src="{{ '/assets/js/filterTable.min.js' | relative_url }}"></script>
 <div>
     <input type="text" id="searchInput" placeholder="検索..." onkeyup="filterTable()">
-    <button onclick="sortTable(0)">曲名でソート</button>
-    <button onclick="sortTable(1)">採譜順序でソート</button>
-    <button onclick="sortTable(2)">備考でソート</button>
 </div>
 <div class="responsive-table">
     <table id="songsTable">
         <thead>
             <tr>
-                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a></th>
-                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a></th>
-                <th scope="col">備考</th>
+                <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a> <a href="#" onclick="sortTable('曲名', 'asc')">↑</a> <a href="#" onclick="sortTable('曲名', 'desc')">↓</a></th>
+                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('採譜順序', 'asc')">↑</a> <a href="#" onclick="sortTable('採譜順序', 'desc')">↓</a></th>
+                <th scope="col">備考 <a href="#" onclick="sortTable('備考', 'asc')">↑</a> <a href="#" onclick="sortTable('備考', 'desc')">↓</a></th>
             </tr>
         </thead>
         <tbody>
