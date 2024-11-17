@@ -1,15 +1,16 @@
 <p id="last-updated">最終更新日を取得中...</p>
 <script src="{{ '/assets/js/gitlog.min.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/filterTable.min.js' | relative_url }}"></script>
-<div>
-    <input type="text" id="searchInput" placeholder="検索..." onkeyup="filterTable()">
+<div class="input-field">
+    <input placeholder="Placeholder" id="searchInput" type="text" class="validate" onkeyup="filterTable()">
+    <label for="first_name">検索</label>
 </div>
 <div class="responsive-table">
     <table id="songsTable">
         <thead>
             <tr>
                 <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a> <a href="#" onclick="sortTable('0', 'asc')">↑</a> <a href="#" onclick="sortTable('0', 'desc')">↓</a></th>
-                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1', 'asc')">↑</a> <a href="#" onclick="sortTable('2', 'desc')">↓</a></th>
+                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1', 'asc')">↑</a> <a href="#" onclick="sortTable('1', 'desc')">↓</a></th>
                 <th scope="col">備考 <a href="#" onclick="sortTable('2', 'asc')">↑</a> <a href="#" onclick="sortTable('2', 'desc')">↓</a></th>
             </tr>
         </thead>
