@@ -54,7 +54,9 @@ function sortTable(columnIndex, order) {
             }
         }
         if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            if (rows[i + 1]) {
+                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            }
             switching = true;
             switchcount++;
         } else {
