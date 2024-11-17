@@ -10,7 +10,7 @@
         <thead>
             <tr>
                 <th scope="col"><a href="{{ '/songs/曲名' | relative_url }}">曲名</a></th>
-                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1')"><i class="material-icons">sort</i></a></th>
+                <th scope="col"><a href="{{ '/songs/採譜順序' | relative_url }}">採譜順序</a> <a href="#" onclick="sortTable('1')"><i class="tiny material-icons">sort</i></a></th>
                 <th scope="col">備考</th>
             </tr>
         </thead>
@@ -18,7 +18,7 @@
             {% for song in site.data.songs -%}
             <tr>
                 {% if song.url != 'none' -%}
-                <td class="wrap"><a href="{{ song.url }}" target="_blank">{{ song.name }}<i class="material-icons">open_in_new</i></a></td>
+                <td class="wrap"><a href="{{ song.url }}" target="_blank">{{ song.name }}<i class="tiny material-icons">open_in_new</i></a></td>
                 {% else -%}
                 <td class="wrap">{{ song.name }}</td>
                 {% endif -%}
