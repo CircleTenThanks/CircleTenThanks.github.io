@@ -29,6 +29,7 @@ jobs:
       # 4. CSVファイルの重複チェックと修正
       - name: Check for duplicates in 'lank' column
         run: |
+          echo "
           import pandas as pd
 
           # CSVファイルを読み込む
@@ -43,9 +44,11 @@ jobs:
               # 修正後のデータをCSVとして保存
               df.to_csv('_data/songs.csv', index=False)
 
-              print("Duplicates found and resolved.")
+              print('Duplicates found and resolved.')
           else:
-              print("No duplicates found in the 'lank' column.")
+              print('No duplicates found in the lank column.')
+          " > check_duplicates.py
+          python check_duplicates.py
 
       # 5. 修正されたCSVファイルをコミット
       - name: Commit changes
