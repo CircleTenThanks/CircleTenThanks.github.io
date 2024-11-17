@@ -35,30 +35,51 @@ jobs:
           # CSVファイルを読み込む
           df = pd.read_csv('_data/songs.csv')
 
-          # 重複する'lank'の値を検出
-          if df['lank'].duplicated().any():
-              # 重複を解決するために、重複を除去（適宜修正）
-              df['lank'] = df['lank'].fillna('')  # NaNを空文字に置き換え
-              df['lank'] = df.groupby('lank').cumcount().astype(str)  # 重複を避けるため番号付け
+          # 重複する'lank'の値を検出（空値を除外）
+          duplicated_lanks = df[df['lank'].notna()]['lank'].duplicated(keep=False)
+          
+          if duplicated_lanks.any():
+              # 重複がある値のみを処理
+              for lank_value in df[duplicated_lanks]['lank'].unique():
+                  mask = df['lank'] == lank_value
+                  df.loc[mask, 'lank'] = [f'{lank_value}_{i}' for i in range(sum(mask))]
 
               # 修正後のデータをCSVとして保存
               df.to_csv('_data/songs.csv', index=False)
-
               print('Duplicates found and resolved.')
           else:
               print('No duplicates found in the lank column.')
           " > check_duplicates.py
           python check_duplicates.py
 
-      # 5. 修正されたCSVファイルをコミット
+      # 5. 修正されたCSVファイルを新しいブランチにコミット
       - name: Commit changes
         run: |
+          # 新しいブランチ名を生成（タイムスタンプ付き）
+          branch_name="fix/duplicate-lanks-$(date +%Y%m%d-%H%M%S)"
+          
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
+          
+          # 新しいブランチを作成
+          git checkout -b $branch_name
+          
           git add _data/songs.csv
           git commit -m "Fix: Resolve duplicate 'lank' values"
           git remote set-url origin https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git push
+          git push origin $branch_name
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 6. プルリクエストを作成
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: '🤖 重複するlank値の修正'
+          body: |
+            重複するlank値を自動的に修正しました。
+          branch: $branch_name
+          base: main
+          labels: automated-pr, duplicate-fix
 
