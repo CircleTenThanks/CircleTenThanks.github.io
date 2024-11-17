@@ -35,6 +35,14 @@ function sortTable(columnIndex) {
             x = rows[i].getElementsByTagName("TD")[columnIndex];
             y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
 
+            // 空文字の行を非表示にする
+            if (x.innerHTML.trim() === "") {
+                rows[i].style.display = "none"; // 空文字の行を非表示
+                continue; // 次の行へ
+            } else {
+                rows[i].style.display = ""; // 空文字でない行は表示
+            }
+
             if (dir === "asc") {
                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                     shouldSwitch = true;
@@ -54,6 +62,12 @@ function sortTable(columnIndex) {
         } else {
             if (switchcount === 0 && dir === "asc") {
                 dir = "desc"; // 降順に切り替え
+                switching = true;
+            } else if (switchcount === 0 && dir === "desc") {
+                dir = "original"; // 元の状態に切り替え
+                switching = true;
+            } else if (switchcount === 0 && dir === "original") {
+                dir = "asc"; // 昇順に戻す
                 switching = true;
             }
         }
