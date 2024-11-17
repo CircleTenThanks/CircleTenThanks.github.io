@@ -1,3 +1,6 @@
+// グローバル変数として列ごとの状態を保持
+const columnStates = {};
+
 function filterTable() {
     var input, filter, table, tr, td, i, j, txtValue;
     input = document.getElementById("searchInput");
@@ -24,7 +27,12 @@ function sortTable(columnIndex) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("songsTable");
     switching = true;
-    dir = "asc"; // 初期は昇順
+
+    // 列の状態を初期化（未設定の場合）
+    if (!columnStates[columnIndex]) {
+        columnStates[columnIndex] = "asc";
+    }
+    dir = columnStates[columnIndex];
 
     while (switching) {
         switching = false;
@@ -37,7 +45,7 @@ function sortTable(columnIndex) {
 
             // 空文字の行を非表示にする
             if (x.innerHTML.trim() === "") {
-                rows[i].style.display = "none"; // 空文字の行を非表示
+                rows[i].style.display = dir === "original" ? "" : "none";
                 continue; // 次の行へ
             } else {
                 rows[i].style.display = ""; // 空文字でない行は表示
@@ -68,6 +76,7 @@ function sortTable(columnIndex) {
                 } else if (dir === "original") {
                     dir = "asc"; // 昇順に戻す
                 }
+                columnStates[columnIndex] = dir; // 状態を保存
                 switching = true;
             }
         }
