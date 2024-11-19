@@ -76,8 +76,6 @@ function sortTable(columnIndex) {
         rows.forEach(row => table.tBodies[0].appendChild(row));
     }
 
-    // 次の状態を設定
-    columnStates[columnIndex] = dir === "asc" ? "desc" 
-        : dir === "desc" ? "original"
-        : "asc";
+    // 次の状態を設定（昇順と元の状態のみに変更）
+    columnStates[columnIndex] = dir === "asc" ? "original" : "asc"; 
 }
