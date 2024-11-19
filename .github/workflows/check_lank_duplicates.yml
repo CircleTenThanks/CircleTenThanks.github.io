@@ -29,28 +29,16 @@ jobs:
       # 4. CSVファイルの重複チェックと修正
       - name: Check for duplicates in 'lank' column
         run: |
-          echo "
-          import pandas as pd
-
-          # CSVファイルを読み込む
-          df = pd.read_csv('_data/songs.csv')
-
-          # 重複する'lank'の値を検出（空値を除外）
-          duplicated_lanks = df[df['lank'].notna()]['lank'].duplicated(keep=False)
-          
-          if duplicated_lanks.any():
-              # 重複がある値のみを処理
-              for lank_value in df[duplicated_lanks]['lank'].unique():
-                  mask = df['lank'] == lank_value
-                  df.loc[mask, 'lank'] = [f'{lank_value}_{i}' for i in range(sum(mask))]
-
-              # 修正後のデータをCSVとして保存
-              df.to_csv('_data/songs.csv', index=False)
-              print('Duplicates found and resolved.')
-          else:
-              print('No duplicates found in the lank column.')
-          " > check_duplicates.py
-          python check_duplicates.py
+          if [ -f .github/scripts/check_duplicates.py ]; then
+            python .github/scripts/check_duplicates.py
+            if [ $? -eq 0 ]; then  # 重複が見つかった場合に処理を続行
+              echo "重複は見つかりませんでした。"
+              exit 0
+            fi
+          else
+            echo "check_duplicates.pyが存在しないため、処理を終了します。"
+            exit 1
+          fi
 
       # 5. 修正されたCSVファイルを新しいブランチにコミット
       - name: Commit changes
