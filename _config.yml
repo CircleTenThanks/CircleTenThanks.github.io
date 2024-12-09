@@ -9,6 +9,7 @@ plugins:
   - jekyll-sass-converter
 twitter:
   username: CircleTenThanks
+  card: summary
 social:
   name:  CircleTenThanks 
   links:
@@ -24,13 +25,16 @@ defaults:
       path: "thumbnail.md"
     values:
       layout: "thumbnail"
-
-
   - scope:
       path: "1804317729522155646.md"
     values:
       title: "1804317729522155646"
       layout: "1804317729522155646"
+defaults:
+  - scope:
+      path: ""
+    values:
+        image: https://circletenthanks.github.io/assets/images/logo.png
 sass:
   style: compressed
   sass_dir: "materialize/sass"
