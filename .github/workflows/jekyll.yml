@@ -27,50 +27,50 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout other repository
+      - name: Checkout materialize
         uses: actions/checkout@v4
         with:
           repository: Dogfalo/materialize
-          path: materialize  # sass_dirと一致させる
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: materialize
           ref: 1.0.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
-      - name: Install csso
-        run: npm install -g csso-cli
+      - name: Install minification tools
+        run: npm install -g csso-cli uglify-js
 
-      - name: Minify CSS
+      - name: Minify assets
         run: |
+          # CSS Minification
           for file in assets/css/*.css; do
-            csso "$file" -o "${file%.css}.min.css"
+            if [[ ! $file =~ \.min\.css$ ]]; then
+              csso "$file" -o "${file%.css}.min.css"
+            fi
           done
-
-      - name: Install UglifyJS
-        run: npm install -g uglify-js
-
-      - name: Run UglifyJS
-        run: |
+          
+          # JavaScript Minification
           for file in assets/js/*.js; do
-            uglifyjs "$file" -o "${file%.js}.min.js"
+            if [[ ! $file =~ \.min\.js$ ]]; then
+              uglifyjs "$file" -o "${file%.js}.min.js"
+            fi
           done
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@8575951200e472d5f2d95c625da0c7bec8217c42 # v1.161.0
+        uses: ruby/setup-ruby@v1.161.0
         with:
-          ruby-version: '3.2.2' # Not needed with a .ruby-version file
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-          cache-version: 0 # Increment this number if you need to re-download cached gems
+          ruby-version: '3.2.2'
+          bundler-cache: true
+          cache-version: 0
           
       - name: Setup Pages
         id: pages
