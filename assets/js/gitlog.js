@@ -40,10 +40,10 @@ class GitCommitManager {
      * @returns {string|null} - キャッシュされた日付またはnull
      */
     getFromCache() {
-        const cachedDate = localStorage.getItem(CACHE_CONFIG.key);
-        const cachedTime = localStorage.getItem(CACHE_CONFIG.timeKey);
+        const cachedDate = localStorage.getItem(this.CACHE_CONFIG.key);
+        const cachedTime = localStorage.getItem(this.CACHE_CONFIG.timeKey);
         
-        if (cachedDate && cachedTime && (Date.now() - cachedTime < CACHE_CONFIG.duration)) {
+        if (cachedDate && cachedTime && (Date.now() - cachedTime < this.CACHE_CONFIG.duration)) {
             return cachedDate;
         }
         return null;
@@ -57,8 +57,8 @@ class GitCommitManager {
      * @param {string} formattedDate - フォーマットされた日付
      */
     updateCache(formattedDate) {
-        localStorage.setItem(CACHE_CONFIG.key, formattedDate);
-        localStorage.setItem(CACHE_CONFIG.timeKey, Date.now());
+        localStorage.setItem(this.CACHE_CONFIG.key, formattedDate);
+        localStorage.setItem(this.CACHE_CONFIG.timeKey, Date.now());
     }
 
     /**
@@ -81,14 +81,14 @@ class GitCommitManager {
     async fetchLastCommitDate() {
         try {
             // キャッシュチェック
-            const cachedDate = getFromCache();
+            const cachedDate = this.getFromCache();
             if (cachedDate) {
-                updateLastCommitDisplay(cachedDate);
+                this.updateLastCommitDisplay(cachedDate);
                 return;
             }
 
             // APIリクエスト
-            const response = await fetch(GITHUB_API_URL);
+            const response = await fetch(this.GITHUB_API_URL);
             if (!response.ok) {
                 throw new Error('GitHub APIの取得に失敗しました');
             }
@@ -96,16 +96,16 @@ class GitCommitManager {
             const commits = await response.json();
             if (commits.length > 0) {
                 const lastCommitDate = new Date(commits[0].commit.committer.date);
-                const formattedDate = formatDate(lastCommitDate);
+                const formattedDate = this.formatDate(lastCommitDate);
                 
-                updateLastCommitDisplay(formattedDate);
-                updateCache(formattedDate);
+                this.updateLastCommitDisplay(formattedDate);
+                this.updateCache(formattedDate);
             } else {
-                updateLastCommitDisplay('更新履歴がありません');
+                this.updateLastCommitDisplay('更新履歴がありません');
             }
         } catch (error) {
             console.error('Error:', error);
-            updateLastCommitDisplay('更新日時の取得に失敗しました');
+            this.updateLastCommitDisplay('更新日時の取得に失敗しました');
         }
     }
 }
