@@ -1,9 +1,17 @@
+/**
+ * キャッシュ設定
+ * @type {{key: string, timeKey: string, duration: number}}
+ */
 const CACHE_CONFIG = {
     key: 'lastCommitDate',
     timeKey: 'lastCommitDateTime',
     duration: 3600000 // 1時間（ミリ秒）
 };
 
+/**
+ * GitHub APIのURL
+ * @type {string}
+ */
 const GITHUB_API_URL = 'https://api.github.com/repos/CircleTenThanks/CircleTenThanks.github.io/commits?path=_data/songs.csv';
 
 /**
