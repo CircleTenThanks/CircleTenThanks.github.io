@@ -30,7 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      RUBY_VERSION: '3.2.2'
+      RUBY_VERSION: '3.4.1'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -68,8 +68,8 @@ jobs:
 
       - name: Install Ruby
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-build
+          sudo apt update
+          sudo apt install -y ruby-build
           sudo mkdir -p /opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64
           sudo ruby-build ${{ env.RUBY_VERSION }} /opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64
           sudo touch /opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64.complete
