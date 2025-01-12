@@ -29,8 +29,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      RUBY_VERSION: '3.4.1'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,20 +64,11 @@ jobs:
             fi
           done
 
-      - name: Install Ruby
-        run: |
-          sudo apt update
-          sudo apt install -y ruby-build
-          sudo mkdir -p /opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64
-          sudo ruby-build ${{ env.RUBY_VERSION }} /opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64
-          sudo touch /opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64.complete
-          echo "/opt/hostedtoolcache/Ruby/${{ env.RUBY_VERSION }}/x64/bin" >> $GITHUB_PATH
-
-      - name: Install bundler
-        run: gem install bundler
-
-      - name: Install dependencies
-        run: bundle install
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.6'
+          bundler-cache: true
           
       - name: Setup Pages
         id: pages
