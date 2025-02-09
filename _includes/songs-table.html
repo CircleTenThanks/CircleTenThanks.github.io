@@ -22,7 +22,7 @@
                 {% else -%}
                 <td class="wrap">{{ song.name }}</td>
                 {% endif -%}
-                <td>{{ song.lank }}</td>
+                <td>{{ song.ordinal }}</td>
                 <td>
                     {% assign notes = song.note | split: '、' -%}
                     {% for note in notes -%}
