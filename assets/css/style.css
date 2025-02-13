@@ -95,3 +95,21 @@ td.wrap {
 .input-field {
     margin: 1rem 1em 0 1em;
 }
+
+/* 画像のレスポンシブ対応 */
+.markdown-body img {
+    max-width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.markdown-body img:hover {
+    opacity: 0.8;
+}
+
+/* モーダル関連のスタイル */
+.modal img {
+    width: 100%;
+    height: auto;
+}

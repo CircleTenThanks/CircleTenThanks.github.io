@@ -7,6 +7,32 @@
     <div class="markdown-body">
 {{ content }}
     </div>
+
+    <!-- 画像モーダル -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
 {% include footer.html %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // モーダルの初期化
+        var modalElems = document.querySelectorAll('.modal');
+        var modalInstances = M.Modal.init(modalElems);
+    
+        // markdown-body内の全ての画像にクリックイベントを追加
+        var images = document.querySelectorAll('.markdown-body img');
+        var modal = M.Modal.getInstance(document.getElementById('imageModal'));
+        var modalImg = document.getElementById('modalImage');
+    
+        images.forEach(function(img) {
+            img.addEventListener('click', function() {
+                modalImg.src = this.src;
+                modal.open();
+            });
+        });
+    });
+    </script>
 </body>
 </html>
