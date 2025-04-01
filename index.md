@@ -9,7 +9,15 @@
 ## [Profile](profile)
 * 中の人のプロフィール
 
-## Google Calendar
-* Googleカレンダーへのスケジュール自動追加プロジェクト紹介ページ
-  * [日向坂46](/Hinatazaka46Calendar)
-  * [渡邉美穂](/MihoWatanabeCalendar)
+## Links
+* [あったら捗るほしいものリスト](https://www.amazon.jp/hz/wishlist/ls/1U86PRK7SAKGR?ref_=wl_share)
+* [YouTube](https://www.youtube.com/@CircleTenThanks)
+  * 推しの楽曲をピアノで奏でています。
+  * チャンネル登録してくれたら喜びます。
+* [X](https://x.com/CircleTenThanks)
+  * ほぼROM専。
+  * DMを開放しているので、問い合わせがあればどうぞ。
+    * スパムが非常に多く見落とす可能性があるため、別途メンション付きポストいただけると確実です。
+* [GitHub](https://github.com/CircleTenThanks)
+  * [Hinatazaka46Calendar](/Hinatazaka46Calendar)
+  * [MihoWatanabeCalendar](/MihoWatanabeCalendar)
