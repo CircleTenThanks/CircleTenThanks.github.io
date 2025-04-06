@@ -10,14 +10,14 @@
 * 中の人のプロフィール
 
 ## Links
-* [あったら捗るほしいものリスト](https://www.amazon.jp/hz/wishlist/ls/1U86PRK7SAKGR?ref_=wl_share)
 * [YouTube](https://www.youtube.com/@CircleTenThanks)
   * 推しの楽曲をピアノで奏でています。
-  * チャンネル登録してくれたら喜びます。
+  * チャンネル登録いただけたら喜びます。
 * [X](https://x.com/CircleTenThanks)
   * ほぼROM専。
   * DMを開放しているので、問い合わせがあればどうぞ。
-    * スパムが非常に多く見落とす可能性があるため、別途メンション付きポストいただけると確実です。
+    * スパムがとても多く見落としてしまうかもしれません。併せてメンション付きポストいただけると助かります。
 * [GitHub](https://github.com/CircleTenThanks)
   * [Hinatazaka46Calendar](/Hinatazaka46Calendar)
   * [MihoWatanabeCalendar](/MihoWatanabeCalendar)
+* [ほしいものリスト](https://www.amazon.jp/hz/wishlist/ls/1U86PRK7SAKGR?ref_=wl_share)
