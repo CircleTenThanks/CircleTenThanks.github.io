@@ -20,4 +20,3 @@
 * [GitHub](https://github.com/CircleTenThanks)
   * [Hinatazaka46Calendar](/Hinatazaka46Calendar)
   * [MihoWatanabeCalendar](/MihoWatanabeCalendar)
-* [ほしいものリスト](https://www.amazon.jp/hz/wishlist/ls/1U86PRK7SAKGR?ref_=wl_share)
